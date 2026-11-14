@@ -6,7 +6,7 @@ import 'api_service.dart';
 class MenuService {
   /// Flag to toggle between API and sample data
   /// Set to true when your CI4 backend is ready
-  static bool useApi = false;
+  static bool useApi = true;
 
   /// Sample data for development without backend
   static final List<MenuModel> _sampleMenus = [

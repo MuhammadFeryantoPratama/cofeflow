@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 /// Base API service for communicating with the CodeIgniter 4 backend.
-/// Change [baseUrl] to match your server address when the backend is ready.
+/// Automatically detects web vs mobile emulator.
 class ApiService {
-  // TODO: Update this URL when your CI4 backend is deployed
-  static const String baseUrl = 'http://10.0.2.2:8080/api';
+  static const String baseUrl =
+      kIsWeb ? 'http://localhost:8080/api' : 'http://10.0.2.2:8080/api';
 
   static final Map<String, String> _headers = {
     'Content-Type': 'application/json',

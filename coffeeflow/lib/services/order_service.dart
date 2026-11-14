@@ -1,10 +1,11 @@
 import '../models/order_model.dart';
 import '../models/menu_model.dart';
+import 'api_service.dart';
 
 /// Service layer for order operations.
 /// Uses sample data as fallback when the backend is not available.
 class OrderService {
-  static bool useApi = false;
+  static bool useApi = true;
 
   /// In-memory sample orders for development
   static final List<OrderModel> _sampleOrders = [
@@ -78,9 +79,10 @@ class OrderService {
         ..sort((a, b) => b.date.compareTo(a.date));
       return sorted;
     }
-    // TODO: Implement API call
-    // final response = await ApiService.get('orders');
-    return [];
+    final response = await ApiService.get('orders');
+    final List<dynamic> data =
+        response is List ? response : response['data'] ?? [];
+    return data.map((json) => OrderModel.fromJson(json)).toList();
   }
 
   /// Create a new order from cart items
@@ -112,9 +114,8 @@ class OrderService {
       _sampleOrders.add(order);
       return order;
     }
-    // TODO: Implement API call
-    // final response = await ApiService.post('orders', order.toJson());
-    return order;
+    final response = await ApiService.post('orders', order.toJson());
+    return OrderModel.fromJson(response['data'] ?? response);
   }
 
   /// Get total revenue from all orders
