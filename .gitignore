@@ -1,0 +1,31 @@
+# Monorepo .gitignore for CoffeeFlow
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Flutter Frontend
+coffeeflow-fe/.dart_tool/
+coffeeflow-fe/.flutter-plugins
+coffeeflow-fe/.flutter-plugins-dependencies
+coffeeflow-fe/.packages
+coffeeflow-fe/build/
+coffeeflow-fe/*.lock
+
+# CodeIgniter 4 Backend
+coffeeflow-backend/vendor/
+coffeeflow-backend/writable/cache/*
+!coffeeflow-backend/writable/cache/index.html
+coffeeflow-backend/writable/logs/*
+!coffeeflow-backend/writable/logs/index.html
+coffeeflow-backend/writable/session/*
+!coffeeflow-backend/writable/session/index.html
+coffeeflow-backend/writable/debugbar/*
+!coffeeflow-backend/writable/debugbar/index.html
+coffeeflow-backend/writable/uploads/*
+!coffeeflow-backend/writable/uploads/index.html
+coffeeflow-backend/php_errors.log
+coffeeflow-backend/.env
